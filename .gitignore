@@ -1,0 +1,90 @@
+# ==========================================
+# 1. ENVIRONMENT & SECURITY SECRETS
+# ==========================================
+# Exclude active private credentials (database passwords, JWT secret keys, etc.)
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# 2. PYTHON & BYTECODE ARTIFACTS
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+personal/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==========================================
+# 3. VIRTUAL ENVIRONMENTS
+# ==========================================
+# Exclude your local virtual environment folder (.venv)
+.venv/
+venv/
+ENV/
+env/
+
+# ==========================================
+# 4. TESTING & COVERAGE CACHES
+# ==========================================
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# 5. RUNTIME UPLOADS & STATIC MEDIA FILES
+# ==========================================
+# Exclude user and admin uploaded files from repository history
+static/uploads/categories/icons/*
+static/uploads/locations/main/*
+static/uploads/locations/gallery/*
+!static/uploads/**/.gitkeep
+
+# ==========================================
+# 6. LOCAL DATABASES & MIGRATION LOCKS
+# ==========================================
+*.sqlite3
+*.db
+*.log
+
+# ==========================================
+# 7. IDEs & EDITORS
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# 8. OPERATING SYSTEM JUNK
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
