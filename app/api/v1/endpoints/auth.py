@@ -16,8 +16,6 @@ router = APIRouter()
 @router.post("/register", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 def register(user_in: UserCreate, db: Session = Depends(get_db)):
     print(user_in)
-    
-    # Optional preliminary check for faster feedback
     existing_user = get_user_by_email(db, user_in.email)
     if existing_user:
         raise HTTPException(
