@@ -1,0 +1,79 @@
+my_travel_app/
+├── app/
+│   ├── __init__.py                  # Marks app as a Python package
+│   ├── api/                         # API Controllers / Endpoints & Routing
+│   │   ├── __init__.py
+│   │   ├── v1/
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoints/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth.py          # Registration, Login, Email Verify, Password Reset
+│   │   │   │   ├── users.py         # User Profiles & Admin User Management
+│   │   │   │   ├── locations.py     # Location CRUD, Search/Filter, Bulk Ops, Image Uploads
+│   │   │   │   └── categories.py    # Category CRUD (with icon support), Bulk Ops
+│   │   │   └── router.py            # Central Router aggregating v1 endpoints
+│   │   └── deps.py                  # Dependencies (DB session, Auth JWT, Admin checks)
+│   │
+│   ├── core/                        # Application Config & Core Utilities
+│   │   ├── __init__.py
+│   │   ├── config.py                # Environment Settings (Pydantic Settings)
+│   │   ├── database.py              # MySQL Engine creation & SessionLocal generator
+│   │   └── security.py              # Password hashing (bcrypt) & JWT creation/verification
+│   │
+│   ├── db/                          # Database Seeding & Setup
+│   │   ├── __init__.py
+│   │   └── init_db.py               # Startup script for First Admin & Default Categories
+│   │
+│   ├── models/                      # SQLModel / SQLAlchemy Database Models
+│   │   ├── __init__.py              # Central export for all DB models
+│   │   ├── user.py                  # User table schema & roles
+│   │   ├── location.py              # Location, LocationImage, & Junction table schemas
+│   │   └── category.py              # Category table schema
+│   │
+│   ├── schemas/                     # Pydantic Schemas for Validation (Request/Response)
+│   │   ├── __init__.py              # Central export for all Pydantic schemas
+│   │   ├── user.py                  # UserCreate, UserRead, Token schemas
+│   │   ├── category.py              # CategoryCreate, CategoryUpdate, CategoryRead schemas
+│   │   ├── location.py              # LocationCreate, LocationDetailRead, Image schemas
+│   │   └── common.py                # Generic Paginated & Bulk response wrappers
+│   │
+│   ├── services/                    # Business Logic Layer (Database Queries)
+│   │   ├── __init__.py
+│   │   ├── user_service.py          # User CRUD & Role logic
+│   │   ├── location_service.py      # Location CRUD, Filtering, & Bulk operations
+│   │   └── category_service.py      # Category CRUD & Icon management
+│   │
+│   ├── utils/                       # Helper Functions & Secondary Services
+│   │   ├── __init__.py
+│   │   ├── email.py                 # FastAPI-Mail async email handlers (Reset, Verification)
+│   │   └── helpers.py               # Image validation, UUID naming, Slugify, File storage
+│   │
+│   └── main.py                      # FastAPI App initialization, CORS, & Static Mounts
+│
+├── static/                          # Uploaded Static Files (Publicly accessible)
+│   └── uploads/
+│       ├── categories/              
+│       │   └── icons/               # Specific folder for Category Icon files (.png, .svg, etc.)
+│       └── locations/
+│           ├── main/                # Primary cover images for locations
+│           └── gallery/             # Additional gallery images for locations
+│
+├── tests/                           # Automated Integration & Unit Tests
+│   ├── __init__.py
+│   ├── conftest.py                  # Pytest fixtures (In-memory DB, TestClient)
+│   ├── test_auth.py                 # Auth endpoints test suite
+│   ├── test_users.py                # User management test suite
+│   ├── test_categories.py           # Category endpoints test suite
+│   └── test_locations.py            # Location endpoints test suite
+│
+├── alembic/                         # Database Migration Scripts
+│   ├── versions/                    # Generated migration files
+│   └── env.py                       # Alembic environment configuration
+│
+├── .env                             # Active Environment Variables (Private / Git-ignored)
+├── .env.example                     # Example environment variable template
+├── .gitignore                       # Complete ignore rules for secrets, venv, and uploads
+├── alembic.ini                      # Alembic CLI configuration
+├── Dockerfile                       # Container definition for deployment
+├── requirements.txt                 # Project Python dependencies
+└── README.md                        # Documentation
