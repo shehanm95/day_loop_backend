@@ -1,0 +1,29 @@
+$kind: http-request
+name: Create Categories Bulk
+method: POST
+url: '{{baseUrl}}/api/v1/categories/bulk'
+order: 6000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    [
+      {
+        "name": "Adventure",
+        "slug": "adventure",
+        "description": "Adventure and extreme sports",
+        "is_active": true,
+        "display_order": 1
+      },
+      {
+        "name": "Culture",
+        "slug": "culture",
+        "description": "Cultural and historical sites",
+        "is_active": true,
+        "display_order": 2
+      }
+    ]

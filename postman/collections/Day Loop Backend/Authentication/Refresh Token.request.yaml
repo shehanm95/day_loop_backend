@@ -1,0 +1,22 @@
+$kind: http-request
+name: Refresh Token
+method: POST
+url: '{{baseUrl}}/api/v1/auth/refresh'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "refresh_token": "{{refreshToken}}"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      const res = pm.response.json();
+      if (res.access_token) {
+          pm.collectionVariables.set("accessToken", res.access_token);
+      }

@@ -1,0 +1,16 @@
+$kind: http-request
+name: Get Categories
+method: GET
+url: '{{baseUrl}}/api/v1/categories/'
+order: 2000
+queryParams:
+  - key: skip
+    value: '0'
+  - key: limit
+    value: '100'
+  - key: is_active
+    value: 'true'
+    disabled: true
+  - key: search
+    value: ''
+    disabled: true

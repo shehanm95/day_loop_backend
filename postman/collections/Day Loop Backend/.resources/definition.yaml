@@ -1,0 +1,6 @@
+$kind: collection
+description: "API collection for the Day Loop travel app backend. Base URL: {{baseUrl}}/api/v1"
+variables:
+  baseUrl: http://localhost:8000
+  accessToken: ""
+  refreshToken: ""

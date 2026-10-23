@@ -3,6 +3,7 @@ from app.core.config import settings
 
 # Import all models here so SQLModel metadata registers them
 from app.models.user import User 
+from app.models.category import Category
 
 engine = create_engine(
     settings.SQLALCHEMY_DATABASE_URI,

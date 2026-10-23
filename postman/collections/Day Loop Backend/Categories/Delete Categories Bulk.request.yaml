@@ -1,0 +1,14 @@
+$kind: http-request
+name: Delete Categories Bulk
+method: DELETE
+url: '{{baseUrl}}/api/v1/categories/bulk'
+order: 13000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    {"ids": [1, 2, 3]}
