@@ -1,0 +1,11 @@
+$kind: http-request
+name: Search Categories
+method: GET
+url: '{{baseUrl}}/api/v1/categories/search'
+order: 3000
+queryParams:
+  - key: q
+    value: nature
+  - key: is_active
+    value: 'true'
+    disabled: true

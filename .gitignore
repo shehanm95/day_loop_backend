@@ -52,6 +52,7 @@ env/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+.postman
 
 # ==========================================
 # 5. RUNTIME UPLOADS & STATIC MEDIA FILES

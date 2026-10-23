@@ -1,0 +1,10 @@
+$kind: http-request
+name: Toggle Category Status
+method: PATCH
+url: '{{baseUrl}}/api/v1/categories/{{categoryId}}/status'
+order: 10000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
