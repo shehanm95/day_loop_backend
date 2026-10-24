@@ -1,0 +1,16 @@
+$kind: http-request
+name: Upload Category Image
+method: POST
+url: '{{baseUrl}}/api/v1/categories/{{categoryId}}/image'
+order: 11000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: formdata
+  content:
+    - key: file
+      type: file
+      src: ''

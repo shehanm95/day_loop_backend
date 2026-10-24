@@ -1,0 +1,17 @@
+$kind: http-request
+name: Reorder Categories
+method: PATCH
+url: '{{baseUrl}}/api/v1/categories/reorder'
+order: 9000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    [
+      {"id": 1, "display_order": 0},
+      {"id": 2, "display_order": 1}
+    ]

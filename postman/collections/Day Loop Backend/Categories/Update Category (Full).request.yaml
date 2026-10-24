@@ -1,0 +1,20 @@
+$kind: http-request
+name: 'Update Category (Full)'
+method: PUT
+url: '{{baseUrl}}/api/v1/categories/{{categoryId}}'
+order: 7000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    {
+      "name": "Nature Updated",
+      "slug": "nature-updated",
+      "description": "Updated nature description",
+      "is_active": true,
+      "display_order": 0
+    }

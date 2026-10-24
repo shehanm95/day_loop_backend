@@ -1,0 +1,10 @@
+$kind: http-request
+name: Delete Location Gallery Image
+method: DELETE
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}/gallery/{{imageId}}'
+order: 12000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'

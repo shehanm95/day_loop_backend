@@ -1,0 +1,18 @@
+$kind: http-request
+name: 'Update Location (Partial)'
+method: PATCH
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}'
+order: 8000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    {
+      "description": "Updated description for this location.",
+      "is_active": true,
+      "rating": 4.5
+    }

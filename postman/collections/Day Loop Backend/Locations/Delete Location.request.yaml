@@ -1,0 +1,14 @@
+$kind: http-request
+name: Delete Location
+method: DELETE
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}'
+order: 13000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+queryParams:
+  - key: soft_delete
+    value: 'true'
+    description: 'If true, marks the location as inactive instead of permanently deleting it'

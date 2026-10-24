@@ -1,0 +1,31 @@
+$kind: http-request
+name: Create Category
+method: POST
+url: '{{baseUrl}}/api/v1/categories/'
+order: 1000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: formdata
+  content:
+    - key: name
+      type: text
+      value: Nature
+    - key: slug
+      type: text
+      value: nature
+    - key: description
+      type: text
+      value: Nature and outdoor locations
+    - key: is_active
+      type: text
+      value: 'true'
+    - key: display_order
+      type: text
+      value: '0'
+    - key: file
+      type: file
+      src: ''

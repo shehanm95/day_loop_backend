@@ -1,0 +1,10 @@
+$kind: http-request
+name: Delete All Locations
+method: DELETE
+url: '{{baseUrl}}/api/v1/locations/'
+order: 15000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'

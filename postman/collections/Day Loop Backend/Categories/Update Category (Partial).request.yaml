@@ -1,0 +1,17 @@
+$kind: http-request
+name: 'Update Category (Partial)'
+method: PATCH
+url: '{{baseUrl}}/api/v1/categories/{{categoryId}}'
+order: 8000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    {
+      "name": "Nature Patched",
+      "description": "Partially updated description"
+    }

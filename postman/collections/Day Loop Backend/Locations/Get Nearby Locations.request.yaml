@@ -1,0 +1,15 @@
+$kind: http-request
+name: Get Nearby Locations
+method: GET
+url: '{{baseUrl}}/api/v1/locations/nearby'
+order: 2000
+queryParams:
+  - key: lat
+    value: '7.9572'
+    description: User latitude
+  - key: lon
+    value: '80.7603'
+    description: User longitude
+  - key: radius_km
+    value: '25.0'
+    description: Radius in kilometers (default 25.0)

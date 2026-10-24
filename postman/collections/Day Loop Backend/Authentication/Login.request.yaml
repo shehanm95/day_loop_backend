@@ -1,0 +1,24 @@
+$kind: http-request
+method: POST
+url: "{{baseUrl}}/api/v1/auth/login"
+order: 2000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "shehan@example.com",
+      "password": "Shehan@123"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const res = pm.response.json();
+      if (res.access_token) {
+          pm.collectionVariables.set("accessToken", res.access_token);
+      }
+      if (res.refresh_token) {
+          pm.collectionVariables.set("refreshToken", res.refresh_token);
+      }
+    language: text/javascript
