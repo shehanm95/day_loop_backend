@@ -1,0 +1,26 @@
+$kind: http-request
+name: Get Locations
+method: GET
+url: '{{baseUrl}}/api/v1/locations/'
+order: 1000
+queryParams:
+  - key: skip
+    value: '0'
+  - key: limit
+    value: '100'
+  - key: category
+    value: ''
+    disabled: true
+    description: Filter by category slug or name
+  - key: district
+    value: ''
+    disabled: true
+    description: Filter by district
+  - key: city
+    value: ''
+    disabled: true
+    description: Filter by city
+  - key: search
+    value: ''
+    disabled: true
+    description: Search term for name or description
