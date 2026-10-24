@@ -38,9 +38,10 @@ def get_nearby_locations(
 def get_location_by_id(location_id: int, db: Session = Depends(get_db)):
     return LocationService.get_location_by_id(db, location_id)
 
-@router.get("/name/{location_name}", response_model=LocationResponse)
-def get_location_by_name(location_name: str, db: Session = Depends(get_db)):
-    return LocationService.get_location_by_name(db, location_name)
+@router.get("/name/{location_name}", response_model=List[LocationResponse])
+def get_locations_by_name(location_name: str, db: Session = Depends(get_db)):
+    """Fetch a list of locations whose names match or contain the given search string."""
+    return LocationService.get_locations_by_name(db, location_name)
 
 
 @router.post("/", response_model=LocationResponse, status_code=status.HTTP_201_CREATED)

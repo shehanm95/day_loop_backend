@@ -69,12 +69,11 @@ class LocationService:
         return location
 
     @staticmethod
-    def get_location_by_name(db: Session, name: str) -> Location:
-        statement = select(Location).where(col(Location.name).ilike(f"%{name}%"))
-        location = db.exec(statement).first()
-        if not location:
-            raise HTTPException(status_code=404, detail="Location not found")
-        return location
+    def get_locations_by_name(db: Session, location_name: str) -> List[Location]:
+        """Search and return all locations matching the name (case-insensitive partial match)."""
+        statement = select(Location).where(col(Location.name).ilike(f"%{location_name}%"))
+        locations = db.exec(statement).all()
+        return list(locations)
 
     @staticmethod
     def create_location(
