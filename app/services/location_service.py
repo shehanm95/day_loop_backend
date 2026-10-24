@@ -69,6 +69,14 @@ class LocationService:
         return location
 
     @staticmethod
+    def get_location_by_name(db: Session, name: str) -> Location:
+        statement = select(Location).where(col(Location.name).ilike(f"%{name}%"))
+        location = db.exec(statement).first()
+        if not location:
+            raise HTTPException(status_code=404, detail="Location not found")
+        return location
+
+    @staticmethod
     def create_location(
         db: Session,
         name: str,
