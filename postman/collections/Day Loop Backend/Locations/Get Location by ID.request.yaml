@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Location by ID
+method: GET
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}'
+order: 4000

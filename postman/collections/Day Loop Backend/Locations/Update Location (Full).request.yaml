@@ -1,0 +1,78 @@
+$kind: http-request
+name: 'Update Location (Full)'
+method: PUT
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}'
+order: 7000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: formdata
+  content:
+    - key: name
+      type: text
+      value: Sigiriya Rock Fortress
+    - key: slug
+      type: text
+      value: sigiriya-rock-fortress
+    - key: description
+      type: text
+      value: 'An ancient rock fortress and palace ruin in the central Matale District. A UNESCO World Heritage Site.'
+    - key: latitude
+      type: text
+      value: '7.9572'
+    - key: longitude
+      type: text
+      value: '80.7603'
+    - key: address
+      type: text
+      value: Sigiriya
+    - key: city
+      type: text
+      value: Sigiriya
+    - key: district
+      type: text
+      value: Matale
+    - key: province
+      type: text
+      value: Central
+    - key: opening_time
+      type: text
+      value: '07:00'
+    - key: closing_time
+      type: text
+      value: '17:30'
+    - key: average_visit_duration
+      type: text
+      value: '3.5'
+    - key: entry_fee_local
+      type: text
+      value: '60.0'
+    - key: entry_fee_foreign
+      type: text
+      value: '35.0'
+    - key: contact_number
+      type: text
+      value: '+94662286000'
+    - key: website
+      type: text
+      value: 'https://www.sigiriya.lk'
+    - key: is_active
+      type: text
+      value: 'true'
+    - key: category_ids
+      type: text
+      value: '1'
+      description: 'Comma-separated category IDs, e.g., 1,2'
+    - key: cover_image
+      type: file
+      src: ''
+      disabled: true
+      description: Optional new cover image file
+    - key: gallery_files
+      type: file
+      src: ''
+      disabled: true
+      description: Optional new gallery image files

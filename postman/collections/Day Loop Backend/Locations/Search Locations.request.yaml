@@ -1,0 +1,11 @@
+$kind: http-request
+name: Search Locations
+method: GET
+url: '{{baseUrl}}/api/v1/locations/search'
+order: 2000
+queryParams:
+  - key: q
+    value: 'Sigiriya'
+  - key: is_active
+    value: 'true'
+    disabled: true

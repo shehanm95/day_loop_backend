@@ -1,0 +1,51 @@
+$kind: http-request
+name: Create Locations Bulk
+method: POST
+url: '{{baseUrl}}/api/v1/locations/bulk'
+order: 6000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: json
+  content: |-
+    [
+      {
+        "name": "Yala National Park",
+        "slug": "yala-national-park",
+        "description": "Sri Lanka's most visited national park, famous for leopards.",
+        "latitude": 6.3728,
+        "longitude": 81.5197,
+        "address": "Yala",
+        "city": "Tissamaharama",
+        "district": "Hambantota",
+        "province": "Southern",
+        "opening_time": "06:00",
+        "closing_time": "18:00",
+        "average_visit_duration": 4.0,
+        "entry_fee_local": 60.0,
+        "entry_fee_foreign": 25.0,
+        "is_active": true,
+        "category_ids": [1]
+      },
+      {
+        "name": "Galle Fort",
+        "slug": "galle-fort",
+        "description": "A UNESCO World Heritage Site, a Dutch colonial fort in Galle.",
+        "latitude": 6.0269,
+        "longitude": 80.2167,
+        "address": "Galle Fort, Galle",
+        "city": "Galle",
+        "district": "Galle",
+        "province": "Southern",
+        "opening_time": "00:00",
+        "closing_time": "23:59",
+        "average_visit_duration": 2.5,
+        "entry_fee_local": 0.0,
+        "entry_fee_foreign": 0.0,
+        "is_active": true,
+        "category_ids": [2]
+      }
+    ]

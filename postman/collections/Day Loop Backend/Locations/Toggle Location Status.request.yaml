@@ -1,0 +1,10 @@
+$kind: http-request
+name: Toggle Location Status
+method: PATCH
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}/status'
+order: 9000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'

@@ -1,0 +1,19 @@
+$kind: http-request
+name: Upload Location Gallery Image
+method: POST
+url: '{{baseUrl}}/api/v1/locations/{{locationId}}/gallery'
+order: 11000
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{accessToken}}'
+body:
+  type: formdata
+  content:
+    - key: file
+      type: file
+      src: ''
+    - key: caption
+      type: text
+      value: 'View from the top'
