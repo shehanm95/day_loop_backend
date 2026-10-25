@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from typing import Optional, List
 from sqlmodel import SQLModel, Field, Relationship
-from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy import Column, Integer, ForeignKey, Text
 
 # Many-to-many association table linking Locations and Categories
 class LocationCategoryLink(SQLModel, table=True):
@@ -68,7 +68,7 @@ class Location(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(max_length=255, index=True)
     slug: str = Field(max_length=255, unique=True, index=True)
-    description: Optional[str] = Field(default=None)
+    description: Optional[str] = Field(default=None, sa_column=Column(Text))
     
     latitude: float
     longitude: float
