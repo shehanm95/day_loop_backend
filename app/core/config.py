@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     DB_PORT: str
     DB_NAME: str
 
+    # Email Sender
+    EMAIL_APP_PASSWORD: str
+
     # JWT Authentication Settings
     SECRET_KEY: str
     ALGORITHM: str

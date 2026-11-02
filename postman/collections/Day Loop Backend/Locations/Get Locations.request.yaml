@@ -1,26 +1,34 @@
 $kind: http-request
-name: Get Locations
 method: GET
-url: '{{baseUrl}}/api/v1/locations/'
+url: "{{baseUrl}}/api/v1/locations/"
+body:
+  type: json
+  content: "{\r
+
+    \    \"search\" : \"a\",\r
+
+    \    \"category\" : \"2\"\r
+
+    }"
 order: 1000
 queryParams:
   - key: skip
-    value: '0'
+    value: "0"
   - key: limit
-    value: '100'
+    value: "100"
   - key: category
-    value: ''
+    value: ""
     disabled: true
     description: Filter by category slug or name
   - key: district
-    value: ''
+    value: ""
     disabled: true
     description: Filter by district
   - key: city
-    value: ''
+    value: ""
     disabled: true
     description: Filter by city
   - key: search
-    value: ''
+    value: ""
     disabled: true
     description: Search term for name or description

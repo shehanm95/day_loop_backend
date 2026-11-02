@@ -1,6 +1,6 @@
 $kind: http-request
 method: POST
-url: "{{baseUrl}}/api/v1/auth/register"
+url: "{{baseUrl}}/api/v1/auth/send-otp"
 order: 1000
 headers:
   Content-Type: application/json
@@ -8,9 +8,5 @@ body:
   type: json
   content: |-
     {
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "shehan@example.com",
-      "password": "Shehan@123",
-      "role": "admin"
+     "email": "sajidesign78@gmail.com"
     }

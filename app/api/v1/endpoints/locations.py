@@ -22,6 +22,18 @@ def get_locations(
 ):
     return LocationService.get_locations(db, category, district, city, search, skip, limit)
 
+@router.get("/all", response_model=List[LocationResponse])
+def get_all_locations(
+    db: Session = Depends(get_db),
+    category: Optional[str] = Query(None, description="Filter by category slug or name"),
+    district: Optional[str] = Query(None, description="Filter by district"),
+    city: Optional[str] = Query(None, description="Filter by city"),
+    search: Optional[str] = Query(None, description="Search term for name or description"),
+    skip: int = 0,
+    limit: int = 100
+):
+    return LocationService.get_all_locations(db, category, district, city, search, skip, limit)
+
 
 @router.get("/nearby", response_model=List[LocationResponse])
 def get_nearby_locations(

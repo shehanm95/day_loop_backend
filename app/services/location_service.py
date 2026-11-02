@@ -2,7 +2,7 @@ import math
 from typing import List, Optional
 from fastapi import UploadFile, HTTPException, status
 from sqlmodel import Session, select, col
-from app.models.category import Location, Category, LocationImage
+from app.models.category import Location, Category, LocationCategoryLink, LocationImage
 from app.utils.helpers import save_upload_file
 
 
@@ -20,6 +20,13 @@ class LocationService:
     ) -> List[Location]:
         statement = select(Location).where(Location.is_active == True)
 
+        # Filter by category using the many-to-many link table
+        if category is not None:
+            category_ids = [int(x) for x in category.split(",")]
+            statement = statement.join(LocationCategoryLink).where(
+                col(LocationCategoryLink.category_id).in_(category_ids)
+            )
+
         if district:
             statement = statement.where(col(Location.district).ilike(f"%{district}%"))
         if city:
@@ -29,15 +36,45 @@ class LocationService:
                 col(Location.name).ilike(f"%{search}%") | col(Location.description).ilike(f"%{search}%")
             )
         
-        locations = db.exec(statement.offset(skip).limit(limit)).all()
+        # Apply distinct to eliminate duplicate rows caused by the join, 
+        # then apply pagination (offset/limit)
+        statement = statement.distinct().offset(skip).limit(limit)
+        
+        locations = db.exec(statement).all()
+        return list(locations)
 
-        if category:
-            filtered = []
-            for loc in locations:
-                if any(cat.slug == category or cat.name.lower() == category.lower() for cat in loc.categories):
-                    filtered.append(loc)
-            return filtered
+    @staticmethod
+    def get_all_locations(
+        db: Session,
+        category: Optional[str] = None,
+        district: Optional[str] = None,
+        city: Optional[str] = None,
+        search: Optional[str] = None,
+        skip: int = 0,
+        limit: int = 100
+    ) -> List[Location]:
+        statement = select(Location)
 
+        # Filter by category using the many-to-many link table
+        if category is not None:
+            category_ids = [int(x) for x in category.split(",")]
+            statement = statement.join(LocationCategoryLink).where(
+                col(LocationCategoryLink.category_id).in_(category_ids)
+            )
+
+        if district:
+            statement = statement.where(col(Location.district).ilike(f"%{district}%"))
+        if city:
+            statement = statement.where(col(Location.city).ilike(f"%{city}%"))
+        if search:
+            statement = statement.where(
+                col(Location.name).ilike(f"%{search}%") | col(Location.description).ilike(f"%{search}%")
+            )
+        
+        # Apply distinct and pagination before executing query
+        statement = statement.distinct().offset(skip).limit(limit)
+
+        locations = db.exec(statement).all()
         return list(locations)
 
     @staticmethod
