@@ -2,6 +2,9 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, EmailStr, ConfigDict
 from app.models.user import UserRole
+from typing import Optional
+from pydantic import BaseModel, EmailStr
+from app.models.user import UserRole
 
 class UserBase(BaseModel):
     first_name: str
@@ -9,6 +12,11 @@ class UserBase(BaseModel):
     email: EmailStr
 
 class UserCreate(UserBase):
+    password: str
+    role: Optional[UserRole] = UserRole.USER
+
+class UserUpdateWithPassword(UserBase):
+    id : int
     password: str
     role: Optional[UserRole] = UserRole.USER
 
@@ -32,3 +40,9 @@ class Token(BaseModel):
 
 class RefreshTokenRequest(BaseModel):
     refresh_token: str
+
+class UserUpdate(BaseModel):
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    role: Optional[UserRole] = None
