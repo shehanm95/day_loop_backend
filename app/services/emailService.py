@@ -134,13 +134,13 @@ def send_otp_to_email(recipient_email: str) -> Tuple[bool, str]:
     """
     global otp_storage
     
-    #otp_code = generate_otp(length=6)
-    otp_code = "123456"
+    otp_code = generate_otp(length=6)
+    # otp_code = "123456"
     # Store OTP in memory list
     store_otp(recipient_email, otp_code)
     
     email_message = create_otp_email_message(recipient_email, otp_code)
-    # success = send_email_via_smtp(recipient_email, email_message)
+    success = send_email_via_smtp(recipient_email, email_message)
     success = True
     if success:
         return True, otp_code
@@ -242,10 +242,9 @@ def setPassword(db: Session, body: ReSetPassword) -> bool:
         raise ValueError(message)
     
     # 2. Find the user by email
-    body.email = "shehanmaleesha4884@gmail.com"
     user = user_service.get_user_by_email(db, body.email)
     if not user:
-        raise ValueError("User not found in the system. -")
+        raise ValueError("User not found in the system.")
     
     # 3. Update using the service function (handles hashing and saving safely)
     updated_user = user_service.update_with_password(db, user.id, body.password)  # type: ignore
